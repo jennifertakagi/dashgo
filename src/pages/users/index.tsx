@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Heading, Icon } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
 
 import Header from '../../components/Header';
@@ -7,6 +14,8 @@ import SideBar from '../../components/SideBar';
 import Table from '../../components/Table';
 
 export default function UserList(): JSX.Element {
+  const isWideVersion = useBreakpointValue({ base: false, lg: true });
+
   return (
     <Box>
       <Header />
@@ -31,7 +40,7 @@ export default function UserList(): JSX.Element {
             </Button>
           </Flex>
 
-          <Table />
+          <Table isMobileVersion={isWideVersion} />
 
           <Pagination />
         </Box>

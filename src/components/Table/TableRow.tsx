@@ -5,16 +5,18 @@ interface TableRowProps {
   date: string;
   email: string;
   name: string;
+  isMobileVersion?: boolean;
 }
 
 export default function TableRow({
   date,
   email,
   name,
+  isMobileVersion = false,
 }: TableRowProps): JSX.Element {
   return (
     <Tr>
-      <Td px="6">
+      <Td px={['4', '4', '6']}>
         <Checkbox colorScheme="pink" />
       </Td>
       <Td>
@@ -25,7 +27,7 @@ export default function TableRow({
           </Text>
         </Box>
       </Td>
-      <Td>{date}</Td>
+      {isMobileVersion && <Td>{date}</Td>}
       <Td>
         <Button
           as="a"
@@ -34,7 +36,7 @@ export default function TableRow({
           colorScheme="yellow"
           leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
         >
-          Edit
+          {isMobileVersion ? 'Edit' : ''}
         </Button>
       </Td>
     </Tr>
