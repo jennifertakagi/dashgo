@@ -13,13 +13,13 @@ export default function SideBarNav(): JSX.Element {
   return (
     <Stack spacing="12" align="flex-start">
       <NavSection title="GENERAL">
-        <NavLink icon={RiDashboardLine} title="Dashboard" />
-        <NavLink icon={RiContactsLine} title="Users" />
+        <NavLink icon={RiDashboardLine} href="/dashboard" title="Dashboard" />
+        <NavLink icon={RiContactsLine} href="/users" title="Users" />
       </NavSection>
 
       <NavSection title="AUTOMATION">
-        <NavLink icon={RiInputMethodLine} title="Forms" />
-        <NavLink icon={RiGitMergeLine} title="Automation" />
+        <NavLink icon={RiInputMethodLine} href="/form" title="Forms" />
+        <NavLink icon={RiGitMergeLine} href="/automation" title="Automation" />
       </NavSection>
     </Stack>
   );

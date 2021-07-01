@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   Box,
   Button,
@@ -29,15 +30,17 @@ export default function UserList(): JSX.Element {
               Users
             </Heading>
 
-            <Button
-              as="a"
-              size="sm"
-              fontSize="small"
-              colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-            >
-              Create new
-            </Button>
+            <Link href="/users/create" passHref>
+              <Button
+                as="a"
+                size="sm"
+                fontSize="small"
+                colorScheme="pink"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              >
+                Create new
+              </Button>
+            </Link>
           </Flex>
 
           <Table isMobileVersion={isWideVersion} />

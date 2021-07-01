@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   Box,
   Button,
@@ -46,7 +47,9 @@ export default function CreateUser(): JSX.Element {
 
           <Flex mt="8" justify="flex-end">
             <HStack spacing="4">
-              <Button colorScheme="whiteAlpha">Cancel</Button>
+              <Link href="/users" passHref>
+                <Button colorScheme="whiteAlpha">Cancel</Button>
+              </Link>
               <Button colorScheme="pink">Save</Button>
             </HStack>
           </Flex>
