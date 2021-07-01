@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import { Box, Text, theme } from '@chakra-ui/react';
+import { ApexOptions } from 'apexcharts';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-const options = {
+const options: ApexOptions = {
   chart: {
     toolbar: {
       show: false,
@@ -55,7 +56,23 @@ const series = [{ name: 'series1', data: [31, 61, 18, 68, 100, 160, 299] }];
 
 interface GraphicProps {
   title: string;
-  type: string;
+  type:
+    | 'line'
+    | 'area'
+    | 'bar'
+    | 'histogram'
+    | 'pie'
+    | 'donut'
+    | 'radialBar'
+    | 'scatter'
+    | 'bubble'
+    | 'heatmap'
+    | 'treemap'
+    | 'boxPlot'
+    | 'candlestick'
+    | 'radar'
+    | 'polarArea'
+    | 'rangeBar';
 }
 
 export default function Graphic({ title, type }: GraphicProps): JSX.Element {
