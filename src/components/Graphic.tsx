@@ -60,7 +60,7 @@ interface GraphicProps {
 
 export default function Graphic({ title, type }: GraphicProps): JSX.Element {
   return (
-    <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+    <Box p={['6', '8']} bg="gray.800" borderRadius={8} pb="4">
       <Text fontSize="lg">{title}</Text>
       <Chart options={options} series={series} type={type} height={160} />
     </Box>
