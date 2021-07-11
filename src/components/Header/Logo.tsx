@@ -4,7 +4,7 @@ export default function Logo(): JSX.Element {
   return (
     <Text
       fontSize={['2xl', '3xl']}
-      frontWeight="bold"
+      fontWeight="bold"
       letterSpacing="tight"
       w="64"
     >
