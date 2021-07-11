@@ -1,7 +1,18 @@
 import { Icon, Input, Flex } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { RiSearchLine } from 'react-icons/ri';
+import useDebounce from '../../utils';
 
 export default function SearchBox(): JSX.Element {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 1500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      console.log('Make the search');
+    }
+  }, [debouncedSearchTerm]);
+
   return (
     <Flex
       as="label"
@@ -23,6 +34,8 @@ export default function SearchBox(): JSX.Element {
         mr="4"
         placeholder="Search on platform"
         _placeholder={{ color: 'gray.400' }}
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
       />
       <Icon as={RiSearchLine} fontSize="20" />
     </Flex>
