@@ -17,10 +17,11 @@ import Pagination from '../../components/Pagination';
 import SideBar from '../../components/SideBar';
 import Table from '../../components/Table';
 
+import { api } from '../../services/api';
+
 export default function UserList(): JSX.Element {
-  const { data, error, isLoading } = useQuery('users', async () => {
-    const response = await fetch('https:localhost:3000/api/users');
-    const data = await response.json();
+  const { data, error, isFetching, isLoading } = useQuery('users', async () => {
+    const { data } = await api.get('users');
     const users = data.users.map(user => {
       return {
         createdAt: new Date(user.createdAt).toLocaleDateString('en-US', {
@@ -50,6 +51,9 @@ export default function UserList(): JSX.Element {
           <Flex mb="8" justify="space-between" align="center">
             <Heading size="lg" fontWeight="normal">
               Users
+              {!isLoading && isFetching && (
+                <Spinner size="sm" color="gray.500" ml="4" />
+              )}
             </Heading>
 
             <Link href="/users/create" passHref>
