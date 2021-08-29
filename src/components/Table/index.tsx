@@ -4,10 +4,17 @@ import TableHead from './TableHead';
 import TableRow from './TableRow';
 
 interface TableProps {
+  data: {
+    createdAt: string;
+    email: string;
+    id: number;
+    name: string;
+  }[];
   isMobileVersion?: boolean;
 }
 
 export default function Table({
+  data,
   isMobileVersion = false,
 }: TableProps): JSX.Element {
   return (
@@ -15,12 +22,17 @@ export default function Table({
       <TableHead isMobileVersion={isMobileVersion} />
 
       <Tbody>
-        <TableRow
-          date="01st July, 2021"
-          email="jennifer@email.com"
-          name="Jennifer Takagi"
-          isMobileVersion={isMobileVersion}
-        />
+        {data.map(user => {
+          return (
+            <TableRow
+              key={user.id}
+              date={user.createdAt}
+              email={user.email}
+              name={user.name}
+              isMobileVersion={isMobileVersion}
+            />
+          );
+        })}
       </Tbody>
     </ChakraTable>
   );
