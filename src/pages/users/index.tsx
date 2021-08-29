@@ -1,4 +1,3 @@
-import { useQuery } from 'react-query';
 import Link from 'next/link';
 import {
   Box,
@@ -17,26 +16,10 @@ import Pagination from '../../components/Pagination';
 import SideBar from '../../components/SideBar';
 import Table from '../../components/Table';
 
-import { api } from '../../services/api';
+import useUsers from '../../services/hooks/useUsers';
 
 export default function UserList(): JSX.Element {
-  const { data, error, isFetching, isLoading } = useQuery('users', async () => {
-    const { data } = await api.get('users');
-    const users = data.users.map(user => {
-      return {
-        createdAt: new Date(user.createdAt).toLocaleDateString('en-US', {
-          day: '2-digit',
-          month: 'long',
-          year: 'numeric',
-        }),
-        email: user.email,
-        id: user.id,
-        name: user.name,
-      };
-    });
-
-    return users;
-  });
+  const { data, error, isFetching, isLoading } = useUsers();
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true });
 

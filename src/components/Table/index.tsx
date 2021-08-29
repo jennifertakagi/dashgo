@@ -7,7 +7,7 @@ interface TableProps {
   data: {
     createdAt: string;
     email: string;
-    id: number;
+    id: string;
     name: string;
   }[];
   isMobileVersion?: boolean;
