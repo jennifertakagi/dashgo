@@ -17,9 +17,11 @@ import SideBar from '../../components/SideBar';
 import Table from '../../components/Table';
 
 import useUsers from '../../services/hooks/useUsers';
+import { useState } from 'react';
 
 export default function UserList(): JSX.Element {
-  const { data, error, isFetching, isLoading } = useUsers();
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, error, isFetching, isLoading } = useUsers(currentPage);
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true });
 
@@ -62,9 +64,13 @@ export default function UserList(): JSX.Element {
             </Flex>
           ) : (
             <>
-              <Table data={data} isMobileVersion={isWideVersion} />
+              <Table data={data.users} isMobileVersion={isWideVersion} />
 
-              <Pagination />
+              <Pagination
+                totalCountOfRegisters={data.totalCount}
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
+              />
             </>
           )}
         </Box>
