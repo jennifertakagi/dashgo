@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 import {
   Box,
   Button,
@@ -41,7 +41,7 @@ export default function UserList(): JSX.Element {
               )}
             </Heading>
 
-            <Link href="/users/create" passHref>
+            <NextLink href="/users/create" passHref>
               <Button
                 as="a"
                 size="sm"
@@ -51,7 +51,7 @@ export default function UserList(): JSX.Element {
               >
                 Create new
               </Button>
-            </Link>
+            </NextLink>
           </Flex>
 
           {isLoading ? (

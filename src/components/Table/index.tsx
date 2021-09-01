@@ -27,6 +27,7 @@ export default function Table({
             <TableRow
               key={user.id}
               date={user.createdAt}
+              id={user.id}
               email={user.email}
               name={user.name}
               isMobileVersion={isMobileVersion}
